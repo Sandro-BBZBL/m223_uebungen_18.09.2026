@@ -6,10 +6,12 @@ Nur lokal als Lernanwendung verwenden.
 
 ## Start
 
-Ruby **3.4.7**, Rails **8.0.2.1**, SQLite3. Die Rails-Version steht im Gemfile,
+Ruby **4.0.6**, Rails **8.1.3.1**, SQLite3. Die Rails-Version steht im Gemfile,
 die übrigen Abhängigkeiten im Lockfile. Kein Node-/Tailwind-Setup nötig.
 
 ```sh
+mise trust
+mise install
 bundle install
 bin/rails db:prepare
 bin/rails db:seed
@@ -33,9 +35,11 @@ Datenbank nicht mit.
 
 | Übung | Start | Lösung |
 |---|---|---|
-| Blog | `codex/2026/01-blog-start` | `codex/2026/01-blog-loesung` |
-| Autorisierung | `codex/2026/02-autorisierung-start` | `codex/2026/02-autorisierung-loesung` |
-| Transaktionen | `codex/2026/03-transaktionen-start` | `codex/2026/03-transaktionen-loesung` |
-| Testing | `codex/2026/04-testing-start` | `codex/2026/04-testing-loesung` |
+| Blog | `blog` | `blog-solution` |
+| Autorisierung | `authorization` | `authorization-solution` |
+| Transaktionen | `transactions` | `transactions-solution` |
+| Testing (freiwillige Reserve) | `testing` | `testing-solution` |
 
-Beispiel: `git clone --branch codex/2026/02-autorisierung-start https://gitlab.com/danielpuglisi/explodingfistbump.git exploding-fist-bump-02`
+Beispiel: `git clone --branch authorization https://gitlab.com/danielpuglisi/explodingfistbump.git exploding-fist-bump-02`
+
+Die Ruby-Version ist in `mise.toml` und `.ruby-version` festgelegt. Testing ist kein Pflichtblock des Kurses.
