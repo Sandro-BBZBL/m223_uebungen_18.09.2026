@@ -1,7 +1,8 @@
 require "test_helper"
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  test "the blog can be opened" do
+    get posts_path
+    assert_response :success
+  end
 end
