@@ -38,8 +38,8 @@ Datenbank nicht mit.
 | Blog | `blog` | `blog-solution` |
 | Autorisierung | `authorization` | `authorization-solution` |
 | Transaktionen | `transactions` | `transactions-solution` |
-| Testing (freiwillige Reserve) | `testing` | `testing-solution` |
+| Testing | `testing` | `testing-solution` |
 
 Beispiel: `git clone --branch authorization https://gitlab.com/danielpuglisi/explodingfistbump.git exploding-fist-bump-02`
 
-Die Ruby-Version ist in `mise.toml` und `.ruby-version` festgelegt. Testing ist kein Pflichtblock des Kurses.
+Die Ruby-Version ist in `mise.toml` und `.ruby-version` festgelegt. Testing ist Übung 4 an Tag 2 (ca. 45 Minuten).
