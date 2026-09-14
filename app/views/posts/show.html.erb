@@ -2,9 +2,11 @@
 
 <%= render @post %>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
+<% if authenticated? && Current.user == @post.user %>
+  <div>
+    <%= link_to "Edit this post", edit_post_path(@post) %> |
+    <%= button_to "Destroy this post", @post, method: :delete %>
+  </div>
+<% end %>
 
-  <%= button_to "Destroy this post", @post, method: :delete %>
-</div>
+<%= link_to "Back to posts", posts_path %>

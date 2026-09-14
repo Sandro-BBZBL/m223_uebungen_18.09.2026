@@ -1,7 +1,7 @@
 # Exploding Fist Bump – Modul 223, 2026
 
-Dieser Stand ist die **Ausgangslage für Übung 1: Multi-User-Blog**.
-CRUD funktioniert bereits. Anmeldung und Zugriffsschutz fehlen absichtlich.
+Dieser Stand ist die **Lösung für Übung 1** und die **Ausgangslage für Übung 2: Autorisierung**.
+Registrierung, Login/Logout, Eigentümerzugriff und private Entwürfe funktionieren.
 Nur lokal als Lernanwendung verwenden.
 
 ## Start
@@ -23,13 +23,21 @@ Die Demo-Seeds dürfen nur in der Entwicklungsumgebung ausgeführt werden.
 
 ## Aktueller Übungsstand
 
-**Start für Übung 1: Multi-User-Blog**
+**Lösung für Übung 1 / Start für Übung 2: Autorisierung**
 
-CRUD funktioniert. Ergänzt Registrierung, Login/Logout, Eigentümerzugriff und private Entwürfe. Die fehlende Absicherung ist in diesem Startstand absichtlich Teil der Aufgabe.
+Ergänzt eine Admin-Rolle und Pundit-Policies. Öffentliche Beiträge bleiben öffentlich; eigene Entwürfe bleiben für andere Autoren unsichtbar.
 
 Für einen späteren Einstieg einen neuen Clone-Ordner verwenden. So bleiben eigene
 Änderungen und lokale Daten erhalten. Ein Git-Branchwechsel allein wechselt die
 Datenbank nicht mit.
+
+## Demo-Benutzer
+
+`anna@example.test` und `ben@example.test`, jeweils Passwort `supersecret`.
+Die Konten stammen aus `db/seeds.rb`. Erneutes `bin/rails db:seed` setzt ihre Demo-Passwörter auf `supersecret`.
+Jede Person besitzt einen öffentlichen Beitrag und einen privaten Entwurf.
+Benutze einen normalen Tab und einen Inkognito-Tab für zwei gleichzeitige Sitzungen.
+Bei einer frischen Kopie auf diesem Stand sind keine Schritte aus früheren Übungen nötig.
 
 ## Branches für den Wiedereinstieg
 

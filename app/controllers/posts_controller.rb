@@ -1,8 +1,11 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  allow_unauthenticated_access only: %i[index show]
+  before_action :resume_session, only: %i[index show]
+  before_action :set_visible_post, only: :show
+  before_action :set_owned_post, only: %i[edit update destroy]
 
   def index
-    @posts = Post.all
+    @posts = Post.visible_to(Current.user).order(created_at: :desc)
   end
 
   def show
@@ -13,12 +16,11 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-
+    @post = Current.user.posts.new(post_params)
     if @post.save
-      redirect_to @post
+      redirect_to @post, notice: "Beitrag erstellt."
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: 422
     end
   end
 
@@ -27,26 +29,28 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to @post
+      redirect_to @post, notice: "Beitrag gespeichert."
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: 422
     end
   end
 
   def destroy
-    @post.destroy
-
-    redirect_to posts_path
+    @post.destroy!
+    redirect_to posts_path, status: :see_other, notice: "Beitrag gelöscht."
   end
 
   private
 
-  def set_post
-    @post = Post.find(params[:id])
+  def set_visible_post
+    @post = Post.visible_to(Current.user).find(params[:id])
+  end
+
+  def set_owned_post
+    @post = Current.user.posts.find(params[:id])
   end
 
   def post_params
     params.require(:post).permit(:title, :body, :published_at)
   end
 end
-

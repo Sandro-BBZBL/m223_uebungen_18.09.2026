@@ -23,6 +23,16 @@
   </head>
 
   <body>
+    <div>
+      <%= link_to "Posts", posts_path %>
+      <% if authenticated? %>
+        <%= link_to "Log out", session_path, data: { turbo_method: :delete } %>
+      <% else %>
+        <%= link_to "Signup", new_registration_path %>
+        <%= link_to "Log in", new_session_path %>
+      <% end %>
+    </div>
+    <p role="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

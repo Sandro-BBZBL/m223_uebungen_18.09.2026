@@ -1,0 +1,7 @@
+<% digest = BCrypt::Password.create("supersecret") %>
+one:
+  email_address: anna@example.test
+  password_digest: <%= digest %>
+two:
+  email_address: ben@example.test
+  password_digest: <%= digest %>
