@@ -2,7 +2,7 @@
 
 <%= render @post %>
 
-<% if authenticated? && Current.user == @post.user %>
+<% if policy(@post).update? %>
   <div>
     <%= link_to "Edit this post", edit_post_path(@post) %> |
     <%= button_to "Destroy this post", @post, method: :delete %>

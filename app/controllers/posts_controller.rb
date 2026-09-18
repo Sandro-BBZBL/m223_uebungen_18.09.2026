@@ -2,8 +2,7 @@ class PostsController < ApplicationController
   allow_unauthenticated_access only: %i[index show]
   before_action :resume_session, only: %i[index show]
   before_action :set_visible_post, only: :show
-  before_action :set_owned_post, only: %i[edit update destroy]
-
+  before_action :set_post, only: %i[edit update destroy]
   def index
     @posts = Post.visible_to(Current.user).order(created_at: :desc)
   end
@@ -25,9 +24,11 @@ class PostsController < ApplicationController
   end
 
   def edit
+    authorize @post
   end
 
   def update
+    authorize @post
     if @post.update(post_params)
       redirect_to @post, notice: "Beitrag gespeichert."
     else
@@ -36,6 +37,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    authorize @post
     @post.destroy!
     redirect_to posts_path, status: :see_other, notice: "Beitrag gelöscht."
   end
@@ -46,8 +48,8 @@ class PostsController < ApplicationController
     @post = Post.visible_to(Current.user).find(params[:id])
   end
 
-  def set_owned_post
-    @post = Current.user.posts.find(params[:id])
+  def set_post
+    @post = Post.find(params[:id])
   end
 
   def post_params
